@@ -1,0 +1,79 @@
+body {
+	background-image: url("corkph.jpg");
+	height: 100%;
+	width: 100%;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+h1.bold {
+		font-style: bold;
+		font-family: Perpetua, Baskerville, "Big Calson", "Palatino Linotype", Palatino, "URW Palladio L", "Nimbus Roman No9 L", serif ;
+		text-align: center;
+		height: 100%;
+
+	}
+
+p {
+		text-align: center;
+		font-style: normal;
+		font-family: Perpetua, Baskerville, "Big Caslon", "Palatino Linotype", Palatino, "URW Palladio L", "Nimbus Roman No9 L", serif ;
+	}
+
+
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: #111;
+}
+
+li {
+	display: block;
+	color: white;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+}
+
+li {
+	float: left;
+}
+
+li a {
+	display: block;
+	color: white;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+}
+
+li a:hover {
+  background-color: #666;
+}
+
+.active {
+	background-color: #4CAF50;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

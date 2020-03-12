@@ -1,0 +1,115 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<link rel="stylesheet" href="PersonalInterestsIS1113.css">
+    <meta charset="UTF-8">
+    <title>Image Scroller</title>
+</head>
+<style type="text/css">
+#scroller {
+        position: relative;
+    }
+    #scroller .innerScrollArea {
+        overflow: hidden;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+    }
+    #scroller ul {
+        padding: 0;
+        margin: 0;
+        position: relative;
+    }
+    #scroller li {
+        padding: 0;
+        margin: 0;
+        list-style-type: none;
+        position: absolute;
+    }
+</style>
+<body>
+	<ul>
+		<li><a class="active" href="HomePageIS1113.html">Home</a></li>
+		<li><a href="TravelIS1113.html">Travel</a></li>
+	</ul>
+
+	<h1>Sport</h1>
+	  <div id="scroller" style="width: 550px; height: 400px; margin: 0 auto;"></div>
+    <div class="innerScrollArea">
+        <ul>
+            <li><img src="cork1.jpg" width="600" height="400" /></li>
+            <li><img src="glen1.jpeg" width="600" height="400" /></li>
+            <li><img src="glen2.jpeg" width="600" height="400" /></li>
+            <li><img src="hoggie.jpg" width="535" height="400" /></li>
+            <li><img src="fota.jpeg" width="535" height="400"/></li>
+            <li><img src="rebelog.jpg" width="535" height="400"/></li>
+        </ul>
+    </div>
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $(function(){
+        var scroller = $('#scroller div.innerScrollArea');
+        var scrollerContent = scroller.children('ul');
+        scrollerContent.children().clone().appendTo(scrollerContent);
+        var curX = 0;
+        scrollerContent.children().each(function(){
+            var $this = $(this);
+            $this.css('left', curX);
+            curX += $this.outerWidth(true);
+        });
+        var fullW = curX / 2;
+        var viewportW = scroller.width();
+
+        // Scrolling speed management
+        var controller = {curSpeed:0, fullSpeed:2};
+        var $controller = $(controller);
+        var tweenToNewSpeed = function(newSpeed, duration)
+        {
+            if (duration === undefined)
+                duration = 600;
+            $controller.stop(true).animate({curSpeed:newSpeed}, duration);
+        };
+
+        // Pause on hover
+        scroller.hover(function(){
+            tweenToNewSpeed(0);
+        }, function(){
+            tweenToNewSpeed(controller.fullSpeed);
+        });
+
+        // Scrolling management; start the automatical scrolling
+        var doScroll = function()
+        {
+            var curX = scroller.scrollLeft();
+            var newX = curX + controller.curSpeed;
+            if (newX > fullW*2 - viewportW)
+                newX -= fullW;
+            scroller.scrollLeft(newX);
+        };
+        setInterval(doScroll, 20);
+        tweenToNewSpeed(controller.fullSpeed);
+    });
+</script>
+
+    
+
+
+	
+
+
+
+<hr>
+<h2>Hurling</h2>
+<hr>
+<p>Sport plays an extremely important role in my life as a student and an athlete. Hurling was my first love and I've been involved with my club since I was four years old. I have played with Glen Rovers from the acadamey and street leagues all the way to senior where I hope to continue playing at well into my thirties. Through the years i have been involved in many presitgious competitions,  winning a couple along the way. We reached the u14 county final but lost unfortunately. Two motnhs later we were invited to attend a Munster Feile competition and ended the day by winning the final. We had a shot at redemption in the u15 County final and fprtunately we won in a great game versus Douglas. Back to u16 and I was awarded the captaincy for the year which I carried until minor. We were knocked out of the u16 championship in the semi-final stage but a couple of us u16 were still gifted the oppurtunity to play in the minor championship. We reached the county final and were underdgos against a talented Midleton side. We ran out winners and I was awarded evening echos man of the match award which i was utterly thrilled about. The following year I was asked to represnt Cork at Inter-county level for the minor team. I worked hard to come back from a shoulder injury and was picked to start in the first game. Unfortunately our season ended prematurely as we never progressed past the group stages but it was a huge honour none the less</p>
+<hr>
+<h2>Golf</h2>
+<hr>
+<p>Believe it or not it was through hurling in which i became a member of Fota Island Golf cLub. I had built up an interest in golf from my youth as we had a family home every easter in the Castlerosse hotel in Killarney, adjacent to the former host to the Irish Open Killarney Golf and Fishing club. I became a member when i was 16 years old and took a liking to it almost immeditaly. Through the summer I spent plenty of time during the day playing golf with a couple of other juveniles and made great friend through this. I was asked to represent the junior golf team so I took the oppurtunity with both hands. I entered my first competition and ended up winning with a stableford score of 49 points, the highest stableford score recorded at Cobh Golf CLub. After this I played in Fred Daly matches and reached the Irish Foursomes Matchplay semi-final, losing unfortunately. Golf for me was second priority and more catered to enjoyment than serious sport.</p> 
+<hr>
+</body>
+</html>
+

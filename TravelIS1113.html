@@ -1,0 +1,115 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<link rel="stylesheet" href="TravelIS1113.css">
+    <meta charset="UTF-8">
+    <title>Image Scroller</title>
+</head>
+<style type="text/css">
+#scroller {
+        position: relative;
+    }
+    #scroller .innerScrollArea {
+        overflow: hidden;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+    }
+    #scroller ul {
+        padding: 0;
+        margin: 0;
+        position: relative;
+    }
+    #scroller li {
+        padding: 0;
+        margin: 0;
+        list-style-type: none;
+        position: absolute;
+    }
+</style>
+<body>
+	<ul>
+		<li><a class="active" href="HomePageIS1113.html">Home</a></li>
+		<li><a href="PersonalInterestsIS1113.html">Sport</a></li>
+	</ul>
+
+	<h1>Travel</h1>
+
+    <div id="scroller" style="width: 550px; height: 400px; margin: 0 auto;"></div>
+    <div class="innerScrollArea">
+        <ul>
+            <li><img src="ski.jpg" width="600" height="400" /></li>
+            <li><img src="delphi.jpeg" width="267" height="400" /></li>
+            <li><img src="maga.jpeg" width="600" height="400" /></li>
+            <li><img src="Newyork.jpg" width="535" height="400" /></li>
+        </ul>
+    </div>
+</div>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $(function(){
+        var scroller = $('#scroller div.innerScrollArea');
+        var scrollerContent = scroller.children('ul');
+        scrollerContent.children().clone().appendTo(scrollerContent);
+        var curX = 0;
+        scrollerContent.children().each(function(){
+            var $this = $(this);
+            $this.css('left', curX);
+            curX += $this.outerWidth(true);
+        });
+        var fullW = curX / 2;
+        var viewportW = scroller.width();
+
+        // Scrolling speed management
+        var controller = {curSpeed:0, fullSpeed:2};
+        var $controller = $(controller);
+        var tweenToNewSpeed = function(newSpeed, duration)
+        {
+            if (duration === undefined)
+                duration = 600;
+            $controller.stop(true).animate({curSpeed:newSpeed}, duration);
+        };
+
+        // Pause on hover
+        scroller.hover(function(){
+            tweenToNewSpeed(0);
+        }, function(){
+            tweenToNewSpeed(controller.fullSpeed);
+        });
+
+        // Scrolling management; start the automatical scrolling
+        var doScroll = function()
+        {
+            var curX = scroller.scrollLeft();
+            var newX = curX + controller.curSpeed;
+            if (newX > fullW*2 - viewportW)
+                newX -= fullW;
+            scroller.scrollLeft(newX);
+        };
+        setInterval(doScroll, 20);
+        tweenToNewSpeed(controller.fullSpeed);
+    });
+</script>
+<hr>
+
+<h2>Skiing</h2>
+<hr>
+<p>In transition year we were given the oppurtunity to go on a skiing trip with our year. Knowing it would have been my first time skiing and the fact all my friends were keen to go I had no doubt I wanted to go. We spent one week in Austria trying to master the art of skiing. We started as beginners and the more our confidence grew the more we thought we were semi-pro! Nightime activities were also a blast as we went swimming, ice-skating and even attended some ski shows. A truly once in a lifetime xperience in which I am extremely grateful to have gotten the oppurtunity to go on.</p>
+<hr>
+<h2>Delphi Adventure Resort</h2>
+<hr>
+<p>Another transition year school trip. We were exciled up west to Mayo in an extremely cold, wet and grueling trip. Geared toward personal development and character building it came at a good time in fourht year just when life started to become easy! We took part in many military-like activities such as raft building, surfing, rock climbing, high-wire all while battling the gruesome conditions of winter on the wild atlantic way.</p>
+<hr>
+<h2>6th Year Holiday</h2>
+<hr>
+<p>After the leaving cert we didwhat you would stereotypically do and book a holiday in the sun to cap off what was an amazing 6 years in secondary school. We decided upon Magaluf for the destination as everyone else seemed to gather there. Not much to this trip bar a bit of sun anf the occasional drink or two but an amazing trip and experience with lifelong friends.</p>
+<hr>
+<h2>Stateside</h2>
+<hr>
+<p>I was too little to remember my first visit to the states to visit my American cousins. We went to New York and Boston when i was 3 years old. This June we plan to head stateside again on the same trip to our cousins and tour the Big Apple and have some relaxation time in Boston(assuming the corona virus doesn't interrupt). 5 nights in New York followed by 6 nights in Bosotn whilst being hosted by our cousins. I truly cannot wait for this trip and hope to catch up on everything I missed out on first time around.</p>
+<hr>
+
+</body>
+</html>
